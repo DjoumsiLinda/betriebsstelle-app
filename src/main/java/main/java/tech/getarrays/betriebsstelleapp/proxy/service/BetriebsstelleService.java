@@ -17,9 +17,9 @@ import main.java.tech.getarrays.betriebsstelleapi.proxy.beans.Betriebsstelle;
 @Transactional
 public class BetriebsstelleService {
 
-	public Betriebsstelle anckelmannsplatz(String bst)
+	public Betriebsstelle stelle(String bst)
 	{
-		Betriebsstelle betriebsstelle = new Betriebsstelle();   
+		  
 		try {
 	            FileReader fileReader = new FileReader(new File("src/main/resources/betriebsstelle.csv"));
 
@@ -29,6 +29,7 @@ public class BetriebsstelleService {
 	            for (CSVRecord csvRecord : csvRecords) {
 	            	if(csvRecord.get("Abkurzung").compareTo(bst)==0)
 	            	{
+	            		Betriebsstelle betriebsstelle = new Betriebsstelle(); 
 	            		betriebsstelle.setName(csvRecord.get("Name"));
 	            		betriebsstelle.setKurzname(csvRecord.get("Kurzname"));
 	            		betriebsstelle.setTyp(csvRecord.get("Typ"));
@@ -39,6 +40,6 @@ public class BetriebsstelleService {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	       return betriebsstelle;
+	       return null;
 	}
 }

@@ -17,10 +17,10 @@ public class BetriebsstelleController implements BetriebsstelleApiWebservice
 	
 	@Override
 	public ResponseEntity<Betriebsstelle> anckelmannsplatz(String bst) {
-		Betriebsstelle erg = betriebsstelleService.anckelmannsplatz(bst);
+		Betriebsstelle erg = betriebsstelleService.stelle(bst);
 		if(erg==null)
 		{
-			return new ResponseEntity<>(erg, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(erg, HttpStatus.OK);
 	}
