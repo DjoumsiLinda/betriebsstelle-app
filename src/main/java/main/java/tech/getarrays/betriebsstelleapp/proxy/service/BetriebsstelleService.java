@@ -1,8 +1,6 @@
 package main.java.tech.getarrays.betriebsstelleapp.proxy.service;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 import javax.transaction.Transactional;
 
@@ -21,8 +19,8 @@ public class BetriebsstelleService {
 	{
 		  
 		try {
-	            FileReader fileReader = new FileReader(new File("src/main/resources/betriebsstelle.csv"));
-
+				InputStream is = getClass().getResourceAsStream("/betriebsstelle.csv");
+				BufferedReader fileReader = new BufferedReader(new InputStreamReader(is));
 	            CSVParser csvParser = new CSVParser (fileReader,  CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());
 	            Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 

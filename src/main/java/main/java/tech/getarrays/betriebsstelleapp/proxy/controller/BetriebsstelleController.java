@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.AllArgsConstructor;
 import main.java.tech.getarrays.betriebsstelleapi.proxy.api.BetriebsstelleApiWebservice;
 import main.java.tech.getarrays.betriebsstelleapi.proxy.beans.Betriebsstelle;
 import main.java.tech.getarrays.betriebsstelleapp.proxy.service.BetriebsstelleService;
@@ -12,8 +13,11 @@ import main.java.tech.getarrays.betriebsstelleapp.proxy.service.BetriebsstelleSe
 @RestController
 public class BetriebsstelleController implements BetriebsstelleApiWebservice
 {
-	@Autowired
 	private BetriebsstelleService betriebsstelleService;
+	
+	public BetriebsstelleController(BetriebsstelleService betriebsstelleService) {
+		this.betriebsstelleService = betriebsstelleService;
+	}
 	
 	@Override
 	public ResponseEntity<Betriebsstelle> anckelmannsplatz(String bst) {
